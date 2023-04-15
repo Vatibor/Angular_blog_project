@@ -3,21 +3,6 @@
   max-width: 1200px!important;
 }
 
-input[type = text], input[type = email] {
-  height: 60px;
-  padding-left: 20px;
-  font-size: 13px;
-  width: 100%;
-}
-
-.btn-sub {
-  width: 130px;
-  height: 58px;
-  border: none;
-  font-size: 13px;
-  background-color: var(--primary-color);
-}
-
 .subs-text {
   width: 500px;
 }
