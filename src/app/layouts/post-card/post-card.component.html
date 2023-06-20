@@ -1,13 +1,13 @@
-<div class="card shadow-effect">
+<div class="card shadow-effect" *ngIf="postData">
   <img
-    src="https://images.pexels.com/photos/2220279/pexels-photo-2220279.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+    src="{{ postData.data.postImgPath }}"
     alt="post-image" class="card-img-top">
   <div class="card-body">
-    <small class="bg-light text-danger text-center">Design</small>
+    <small class="bg-light text-danger text-center">{{ postData.data.category.category}}</small>
     <small class="bg-light text-success text-center ms-3">Featured</small>
-    <small class="bg-light text-info text-center ms-3">Views - 100,256</small>
-    <h5 class="mt-1">How to start a blog in 2021 edited new category</h5>
-    <p>Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.</p>
-    <small class="bg-light text-warning text-center ms-3">LAST UPDATED - SEP 20, 2021</small>
+    <small class="bg-light text-info text-center ms-3">Views - {{ postData.data.views}}</small>
+    <h5 class="mt-1">{{ postData.data.title }}</h5>
+    <p>{{ postData.data.excerpt }}</p>
+    <small class="bg-light text-warning text-center ms-3">LAST UPDATED - {{ postData.data.createdAt.toMillis() | date}}</small>
   </div>
 </div>
