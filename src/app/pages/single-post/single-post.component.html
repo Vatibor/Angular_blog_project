@@ -1,34 +1,18 @@
 <div class="container">
   <div class="row">
+
     <div class="col-md-9">
 
       <div class="card shadow-effect">
-        <img src="https://images.pexels.com/photos/6506159/pexels-photo-6506159.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="post-picture" class="card-img-top img-fluid">
+        <img src="{{ postData.postImgPath }}" alt="post-picture" class="card-img-top img-fluid">
         <div class="card-body">
-          <small class="bg-light text-danger text-center">Design</small>
+          <small class="bg-light text-danger text-center">{{ postData.category.category }}</small>
           <small class="bg-light text-success text-center ms-2">Featured</small>
-          <small class="bg-light text-info text-center ms-2">Views - 100,256</small>
-          <small class="bg-light text-warning text-center ms-2">LAST UPDATED - SEP 20, 2023</small>
+          <small class="bg-light text-info text-center ms-2">Views - {{ postData.views }}</small>
+          <small class="bg-light text-warning text-center ms-2">LAST UPDATED - {{ postData.createdAt.toMillis() | date }}</small>
 
-          <h1 class="mt-3 mb-3">HOW TO START A BLOG IN 2023 EDITED NEW CATEGORY</h1>
-          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-            
-            Dignissimos, commodi ipsa facilis voluptatum sequi sapiente soluta, facere, consectetur molestias sit atque inventore quia nesciunt magnam amet maiores. Distinctio ratione nam voluptatem accusantium repudiandae sapiente alias? Facilis, reiciendis 
-            
-            esse cupiditate molestiae sed doloribus suscipit iste saepe! Reiciendis consequuntur distinctio totam quaerat a sequi iste nisi non rerum quos voluptates consequatur dolorem officiis praesentium, maxime perferendis?
-            <br><br>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-            
-            Dignissimos, commodi ipsa facilis voluptatum sequi sapiente soluta, facere, consectetur molestias sit atque inventore quia nesciunt magnam amet maiores. Distinctio ratione nam voluptatem accusantium repudiandae sapiente alias? Facilis, reiciendis 
-            
-            esse cupiditate molestiae sed doloribus suscipit iste saepe! Reiciendis consequuntur distinctio totam quaerat a sequi iste nisi non rerum quos voluptates consequatur dolorem officiis praesentium, maxime perferendis?
-            <br><br>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-            
-            Dignissimos, commodi ipsa facilis voluptatum sequi sapiente soluta, facere, consectetur molestias sit atque inventore quia nesciunt magnam amet maiores. Distinctio ratione nam voluptatem accusantium repudiandae sapiente alias? Facilis, reiciendis 
-            
-            esse cupiditate molestiae sed doloribus suscipit iste saepe! Reiciendis consequuntur distinctio totam quaerat a sequi iste nisi non rerum quos voluptates consequatur dolorem officiis praesentium, maxime perferendis?
-          </p>
+          <h1 class="mt-3 mb-3">{{ postData.title}}</h1>
+          <p [innerHTML]="postData.content"></p>
         </div>
       </div>
 
@@ -38,9 +22,11 @@
     </div>
 
     <div class="col-md-3">
-      <app-post-card></app-post-card>
-      <app-post-card></app-post-card>
-      <app-post-card></app-post-card>
+      <div *ngFor="let SimilarPost of similarPostArray">
+        <app-post-card [postData]="SimilarPost"></app-post-card>
+      </div>
+
+
     </div>
   </div>
 </div>
